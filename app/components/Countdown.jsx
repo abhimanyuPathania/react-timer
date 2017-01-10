@@ -35,6 +35,12 @@ var Countdown = React.createClass({
 		}
 	},
 
+
+	componentWillUnmount: function () {		
+		clearInterval(this.timer);
+		this.timer = null;
+	},
+
 	startTimer: function() {
 		this.timer = setInterval(() => {
 			// 'this' keyword is preserved due to fat arrow function
@@ -43,6 +49,13 @@ var Countdown = React.createClass({
 			this.setState({
 				count: newCount >= 0 ? newCount : 0
 			});
+
+			// this will re-render the input form
+			// 'stopped' state via switch case 'paused' statement
+			// will clear the interval as well
+			if (newCount === 0) {
+				this.setState({countdownStatus: 'stopped'})
+			}
 		}, 1000)
 	},
 
