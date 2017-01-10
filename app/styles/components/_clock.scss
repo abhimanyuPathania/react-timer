@@ -1,0 +1,23 @@
+
+$clock-bg-color: #b5d0e2;
+$clock-border-color: #2099e8;
+
+.clock{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	height: 14rem;
+	width: 14rem;
+	margin: 4rem auto;	
+
+	background-color: $clock-bg-color;
+	border: 2px solid $clock-border-color;
+	border-radius: 50%;
+}
+
+.clock-text{
+	color: $clock-text-color;
+	font-size: 2.25rem;
+	font-weight: 300;
+}
