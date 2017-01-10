@@ -5,7 +5,8 @@
   "main": "app.jsx",
   "scripts": {
     "test": "karma start",
-    "server": "node server.js"
+    "server": "node server.js",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "author": "Abhimanyu Pathania",
   "license": "MIT",

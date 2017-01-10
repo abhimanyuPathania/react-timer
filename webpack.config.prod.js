@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var webpackConfig = require('./webpack.config.js');
+
 module.exports = {
   entry: [
     // load jquery and foundation before app.jsx
@@ -21,6 +23,17 @@ module.exports = {
     new webpack.ProvidePlugin({
       '$': 'jquery',
       'jQuery': 'jquery'
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
     })
   ],
 
@@ -35,16 +48,7 @@ module.exports = {
     // alias lets us require our modules with simple names
     // here we can require the Main module by using simply using 'require("Main")' in any of our module
     root: __dirname,
-    alias: {
-      Main: 'app/components/Main.jsx',
-      Nav: 'app/components/Nav.jsx',
-      Timer: 'app/components/Timer.jsx',
-      Countdown: 'app/components/Countdown.jsx',
-      CountdownForm: 'app/components/CountdownForm.jsx',
-      Clock: 'app/components/Clock.jsx',
-      Controls: 'app/components/Controls.jsx',
-      applicationStyles: 'app/styles/app.scss'
-    },
+    alias: webpackConfig.resolve.alias,
 
     // these are the type of files webpack is looking for
     extensions: ['', '.js', '.jsx']
@@ -71,14 +75,7 @@ module.exports = {
     includePaths: [
       path.resolve(__dirname, './node_modules/foundation-sites/scss')
     ]
-  },
-
-  // set up source maps for debugging
-
-  // cheap-module-eval-source-map
-  // inline-source-map
-  // eval-source-map
-  devtool: 'inline-source-map'
+  }
 };
 
 
