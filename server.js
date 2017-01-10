@@ -1,7 +1,12 @@
 var express = require('express');
+var compression = require('compression');
 
 // Create our app
 var app = express();
+
+// compress responses
+app.use(compression());
+
 const PORT = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
