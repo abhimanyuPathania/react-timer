@@ -10,7 +10,11 @@ module.exports = function(config) {
 		frameworks: ['mocha'],
 
 		// locations of files containing the tests
-		files: ['app/tests/**/*.test.jsx'],
+		files: [
+			'node_modules/jquery/dist/jquery.min.js',
+    		'node_modules/foundation-sites/dist/js/foundation.min.js',
+			'app/tests/**/*.test.jsx'
+		],
 
 		// this tells karma to run preprocessors before running the tests
 		// we need webpack to load our components

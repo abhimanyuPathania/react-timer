@@ -1,6 +1,13 @@
-/* your app's scss goes here*/
 
+// custom variables
 @import "base/variables";
+
+// foundation
+@import "base/foundation-settings"; //foundation variables
+@import "foundation";
+@include foundation-everything;
+
+// components
 @import "components/nav";
 @import "components/clock";
 @import "components/controls";
