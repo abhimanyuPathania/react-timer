@@ -43,7 +43,7 @@ describe('CountdownForm', () => {
 		var $el = $(ReactDOM.findDOMNode(countdownFormComp));
 
 		// simulate the value in the input field
-		countdownFormComp.refs.seconds.value = '109as';
+		countdownFormComp.refs.seconds.value = '109a';
 
 		// simulate submit be passing the form element that gets submitted
 		TestUtils.Simulate.submit($el.find('form')[0])
